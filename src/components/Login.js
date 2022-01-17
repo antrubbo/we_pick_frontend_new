@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const API = process.env.REACT_APP_API_URL
 
@@ -45,6 +46,7 @@ const Login = () => {
                 <br />
                 <button>Submit</button>
             </form>
+            <Link to="/"><button>Back</button></Link>
         </div>
     )
 }
