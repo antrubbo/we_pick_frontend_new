@@ -9,11 +9,7 @@ const Login = () => {
         password: ""
     })
 
-    const handleEmail = (evt) => {
-        setUser({ ...user, [evt.target.id]: evt.target.value })
-    }
-
-    const handlePassword = (evt) => {
+    const logInUserDetails = (evt) => {
         setUser({ ...user, [evt.target.id]: evt.target.value })
     }
 
@@ -39,10 +35,10 @@ const Login = () => {
             <h1>This is the LOGIN page</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
-                <input onChange={handleEmail} type="text" id="email" value={user.email}/>
+                <input onChange={logInUserDetails} type="text" id="email" value={user.email}/>
                 <br />
                 <label htmlFor="password">Password</label>
-                <input onChange={handlePassword} type="password" id="password" value={user.password}/>
+                <input onChange={logInUserDetails} type="password" id="password" value={user.password}/>
                 <br />
                 <button>Submit</button>
             </form>

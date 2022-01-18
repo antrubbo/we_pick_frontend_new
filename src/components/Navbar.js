@@ -5,6 +5,7 @@ const Navbar = () => {
         <div id="navbar">
             This is the Navbar
             <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
         </div>
     )
 }
