@@ -4,7 +4,8 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Account from './pages/Account';
+import SearchResults from './components/SearchResults';
+// import Account from './pages/Account';
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
           <Route exact path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
-          <Route path="/account/:userId/list/:listId">
+          <Route path="search-results" element={<SearchResults />}></Route>
+          {/* <Route path="/account/:userId/list/:listId">
             <Account />
-          </Route>
+          </Route> */}
         </Routes>
     </div>
   );
