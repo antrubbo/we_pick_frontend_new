@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
 const API = process.env.REACT_APP_API_URL
@@ -8,6 +8,10 @@ const Login = () => {
         email: "",
         password: ""
     })
+    const [requestedUser, setRequestedUser] = useState({})
+    let loggedInUser = useRef()
+    loggedInUser.current = requestedUser
+    console.log(loggedInUser.current)
 
     const logInUserDetails = (evt) => {
         setUser({ ...user, [evt.target.id]: evt.target.value })
@@ -24,8 +28,9 @@ const Login = () => {
             })
         .then(r => r.json())
         .then(user => {
-            console.log(user)
+            setRequestedUser(user)
         })
+        .catch(err => console.log(err))
         // Reset Form Fields:
         // setUser({email: "", password: ""})
     }

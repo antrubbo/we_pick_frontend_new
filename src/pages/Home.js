@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react"
+// import Login from "./Login"
+// import Signup from "./Signup"
+// import Account from "./Account"
 
 const API = process.env.REACT_APP_API_URL
 
