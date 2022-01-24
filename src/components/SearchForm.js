@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom"
 
 const API = process.env.REACT_APP_API_URL
 
-const SearchForm = () => {
+const SearchForm = ({ setFoundMovies }) => {
     const navigate = useNavigate()
     const [searchTerms, setSearchTerms] = useState("")
-    const [foundMovies, setFoundMovies] = useState([])
+    // const [foundMovies, setFoundMovies] = useState([])
 
     const handleSearchInput = (evt) => {
         setSearchTerms(evt.target.value)
@@ -16,9 +16,7 @@ const SearchForm = () => {
         evt.preventDefault()
         fetch(`${API}/search`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 title: searchTerms
             })
