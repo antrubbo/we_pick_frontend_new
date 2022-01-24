@@ -11,6 +11,8 @@ import Show from './pages/Show';
 
 function App() {
   const [foundMovies, setFoundMovies] = useState([])
+  const [ showMovie, setShowMovie ] = useState({})
+  console.log(showMovie)
 
   return (
     <div className="App">
@@ -19,8 +21,8 @@ function App() {
           <Route exact path="/" element={<Home />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
-          <Route path="/search-results" element={<SearchResults foundMovies={foundMovies}/>}></Route>
-          <Route path="/movie/:id" element={<Show />}></Route>
+          <Route path="/search-results" element={<SearchResults foundMovies={foundMovies} setShowMovie={setShowMovie}/>}></Route>
+          <Route path="/movie/:id" element={<Show showMovie={showMovie}/>}></Route>
           {/* <Route path="/account/:userId/list/:listId">
             <Account />
           </Route> */}

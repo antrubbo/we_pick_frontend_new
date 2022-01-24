@@ -1,9 +1,6 @@
-// import Modal from 'react-bootstrap/Modal'
-// import { useNavigate } from 'react-router-dom'
-
 import { Link } from "react-router-dom"
 
-const SearchResults = ({ foundMovies }) => {
+const SearchResults = ({ foundMovies, setShowMovie }) => {
    
     function handleResultClick(mov) {
         fetch("https://we-pick.herokuapp.com/movies", {
@@ -20,7 +17,7 @@ const SearchResults = ({ foundMovies }) => {
         })
         .then(r => r.json())
         .then(movie => {
-            console.log(movie)
+            setShowMovie(movie)
         })
     }
 
