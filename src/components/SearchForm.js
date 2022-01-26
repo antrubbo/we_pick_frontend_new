@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const API = process.env.REACT_APP_API_URL
+// const API = process.env.REACT_APP_API_URL
+const API = "http://localhost:8080"
 
 const SearchForm = ({ setFoundMovies }) => {
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ const SearchForm = ({ setFoundMovies }) => {
 
     const handleSearch = (evt) => {
         evt.preventDefault()
-        fetch(`${API}/search`, {
+        fetch(`${API}/movies/search`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -23,8 +24,9 @@ const SearchForm = ({ setFoundMovies }) => {
         })
         .then(res => res.json())
         .then(movies => {
-            setFoundMovies(movies.table.results)
-            navigate("/search-results")
+            console.log(movies)
+            // setFoundMovies(movies.table.results)
+            // navigate("/search-results")
         })
         .catch(err => console.log(err))
     }

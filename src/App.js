@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
@@ -9,10 +9,17 @@ import SearchResults from './pages/SearchResults';
 import Show from './pages/Show';
 // import Account from './pages/Account';
 
+const API = process.env.REACT_APP_API_URL
+
 function App() {
   const [foundMovies, setFoundMovies] = useState([])
   const [ showMovie, setShowMovie ] = useState({})
-  console.log(showMovie)
+
+  useEffect(() => {
+    fetch(`${API}/movies/search`)
+    .then(r => r.json())
+    .then(data => console.log(data))
+  }, [])
 
   return (
     <div className="App">
