@@ -15,8 +15,9 @@ const Signup = () => {
     }
 
     const onFormSubmit = (evt) => {
+        // async/await?
         evt.preventDefault()
-        fetch(`${API}/register`, {
+        fetch(`${API}/api/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

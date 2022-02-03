@@ -5,7 +5,7 @@ const API = process.env.REACT_APP_API_URL
 
 const Login = () => {
     const [user, setUser] = useState({
-        email: "",
+        username: "",
         password: ""
     })
     const [requestedUser, setRequestedUser] = useState({})
@@ -19,13 +19,12 @@ const Login = () => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        fetch(`${API}/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-            })
+        fetch(`${API}/api/users?username=${user.username}`)
+            // method: "POST",
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            // body: JSON.stringify(user)
         .then(r => r.json())
         .then(user => {
             setRequestedUser(user)
@@ -39,8 +38,8 @@ const Login = () => {
         <div id="login">
             <h1>This is the LOGIN page</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input onChange={logInUserDetails} type="text" id="email" value={user.email}/>
+                <label htmlFor="username">Username</label>
+                <input onChange={logInUserDetails} type="text" id="username" value={user.username}/>
                 <br />
                 <label htmlFor="password">Password</label>
                 <input onChange={logInUserDetails} type="password" id="password" value={user.password}/>
