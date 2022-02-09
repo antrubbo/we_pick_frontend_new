@@ -4,7 +4,7 @@ const SearchResults = ({ foundMovies }) => {
 
     let searchResults = foundMovies.map((movie, i) => {
         const { id, title } = movie
-        let movieShow = `/movie/${id}`
+        let movieShow = `/movies/${id}`
         return <Link to={movieShow} key={title + i}>{title}<br /></Link>
     })
 

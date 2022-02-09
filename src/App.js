@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/search-results" element={<SearchResults foundMovies={foundMovies} />}></Route>
-          <Route path="/movie/:id" element={<Show />}></Route>
+          <Route path="/movies/:id" element={<Show />}></Route>
           {/* <Route path="/account/:userId/list/:listId">
             <Account />
           </Route> */}

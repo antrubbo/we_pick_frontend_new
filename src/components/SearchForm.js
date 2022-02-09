@@ -13,19 +13,22 @@ const SearchForm = ({ setFoundMovies }) => {
 
     const handleSearch = (evt) => {
         evt.preventDefault()
-        fetch(`${API}/movies/search?title=${searchTerms}`)
+        fetch(`${API}/api/movies?title=${searchTerms}`)
         .then(res => res.json())
         .then(movies => {
-            setFoundMovies(movies)
-            navigate("/search-results")
+            if (movies.error){
+                console.log(movies.error)
+            } else {
+                setFoundMovies(movies)
+                setSearchTerms("")
+                navigate("/search-results")
+            }
         })
         .catch(err => console.log(err))
     }
 
     return(
         <div id="search-container">
-            
-
             <form className="search-form" onSubmit={handleSearch}>
             <input
                 type="text"
