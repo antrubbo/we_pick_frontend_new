@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
