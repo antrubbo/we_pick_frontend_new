@@ -1,23 +1,23 @@
-// import { useEffect, useState } from "react"
-// import SearchForm from "../components/SearchForm"
+import { useEffect, useState } from "react"
+import PopCarousel from "../components/PopCarousel"
 
-// const API = process.env.REACT_APP_API_URL
+const API = process.env.REACT_APP_API_URL
 
 const Home = () => {
-    // const [movies, setMovies] = useState([])
+    const [popMovies, setPopMovies] = useState([])
 
-    // useEffect(() => {
-    //     fetch(API + "/movies")
-    //     .then(r => r.json())
-    //     .then(data => {
-    //         setMovies(data)
-    //     })
-    // }, [setMovies])
+    useEffect(() => {
+        fetch(`${API}/api/movies/popular`)
+        .then(r => r.json())
+        .then(data => {
+            setPopMovies(data.results)
+        })
+    }, [])
 
     return(
         <div id="home">
-            <h1>This is the HOME page</h1>
-            {/* <SearchForm /> */}
+            <h1>WePick!</h1>
+            {<PopCarousel popMovies={popMovies}/>}
         </div>
     )
 }

@@ -16,14 +16,12 @@ const Show = () => {
         .then(response => response.json())
         .then(response => {setMovie(response)})
     }, [id])
-
-    // const handleShow = () => setShow(!show)
     
     const { title, poster_path, overview, videos } = movie
-    // console.log(videos.results)
+    console.log(movie)
     return(
         <div>
-            {show ? <Trailer videos={videos} show={show} onHide={() => setShow(false)}/> : null}
+            {show && <Trailer videos={videos} show={show} onHide={() => setShow(false)}/>}
             <h1>{title}</h1>
             <img src={`https://themoviedb.org/t/p/w300_and_h450_bestv2${poster_path}`} alt={title} />
             <p>{overview}</p>

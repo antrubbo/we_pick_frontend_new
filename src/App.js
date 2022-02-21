@@ -14,6 +14,7 @@ import Show from './pages/Show';
 
 function App() {
   const [foundMovies, setFoundMovies] = useState([])
+  // useCookie library
 
   return (
     <div className="App">
@@ -24,7 +25,7 @@ function App() {
           <Route path="/signup" element={<Signup />}/>
           <Route path="/search-results" element={<SearchResults foundMovies={foundMovies} />}></Route>
           <Route path="/movies/:id" element={<Show />}></Route>
-          {/* <Route path="/account/:userId/list/:listId">
+          {/* <Route path="/account/:userId">
             <Account />
           </Route> */}
         </Routes>

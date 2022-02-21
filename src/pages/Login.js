@@ -1,15 +1,15 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const API = process.env.REACT_APP_API_URL
 
 const Login = () => {
-    let loggedInUser = useRef()
+    // useCookie, set the incoming JWT to cookie, as long as authenticated 
+
     const [user, setUser] = useState({
         username: "",
         password: ""
     })
-    console.log(loggedInUser.current)
 
     const handleLoginForm = (evt) => {
         setUser({ ...user, [evt.target.id]: evt.target.value })
@@ -20,11 +20,12 @@ const Login = () => {
         fetch(`${API}/api/users/login?username=${user.username}`)
         .then(r => r.json())
         .then(user => {
+            // not returning user, returning response with token, or error message
             if(user.error){
                 console.log(user.error)
                 setUser({username: "", password: ""})
             } else {
-                loggedInUser.current = user
+                // setCookie(incoming JWT token)
                 setUser({username: "", password: ""})
             }
         })
