@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import PopCarousel from "../components/PopCarousel"
+import '../stylesheets/home.css'
 
 const API = process.env.REACT_APP_API_URL
 
@@ -16,7 +17,9 @@ const Home = () => {
 
     return(
         <div id="home">
-            <h1>WePick!</h1>
+            <div id="welcome-container">
+                <h1>WePick!</h1>
+            </div>
             {<PopCarousel popMovies={popMovies}/>}
         </div>
     )
