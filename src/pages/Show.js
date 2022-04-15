@@ -14,7 +14,7 @@ const Show = () => {
     useEffect(() => {
         fetch(`${API}/api/movies/${id}`)
         .then(response => response.json())
-        .then(response => {setMovie(response)})
+        .then(response => setMovie(response))
     }, [id])
     
     const { title, poster_path, overview, videos } = movie
@@ -26,6 +26,12 @@ const Show = () => {
             <img src={`https://themoviedb.org/t/p/w300_and_h450_bestv2${poster_path}`} alt={title} />
             <p>{overview}</p>
             <button onClick={() => setShow(true)}>View Trailer</button>
+            <form>
+                <label htmlFor="selectList">Add to List</label>
+                <select name="" id="selectList">
+                    <option value="">My Movies</option>
+                </select>
+            </form>
         </div>
     )
 }
