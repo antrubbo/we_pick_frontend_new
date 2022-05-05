@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 const API = process.env.REACT_APP_API_URL
 
@@ -8,6 +9,7 @@ const Login = () => {
 
     const [user, setUser] = useState({
         username: "",
+        email: "",
         password: ""
     })
 
@@ -17,17 +19,21 @@ const Login = () => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        fetch(`${API}/api/users/login?username=${user.username}`)
-        .then(r => r.json())
-        .then(user => {
-            // not returning user, returning response with token, or error message
-            if(user.error){
-                console.log(user.error)
-                setUser({username: "", password: ""})
-            } else {
-                // setCookie(incoming JWT token)
-                setUser({username: "", password: ""})
-            }
+        const { username, email, password } = user
+        axios.post(`${API}/api/users/login`, {
+            username,
+            email,
+            password
+        })
+        // .then(r => r.json())
+        .then(loggedInUser => {
+            // setCookie(incoming JWT token)
+            console.log(loggedInUser.data)
+            setUser({username: "", email: "", password: ""})
+        })
+        .catch(error => {
+            console.log(error.response.data.error)
+            setUser({username: "", email: "", password: ""})
         })
     }
 
@@ -37,6 +43,9 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input onChange={handleLoginForm} type="text" id="username" value={user.username}/>
+                <br />
+                <label htmlFor="email">Email</label>
+                <input onChange={handleLoginForm} type="email" id="email" value={user.email}/>
                 <br />
                 <label htmlFor="password">Password</label>
                 <input onChange={handleLoginForm} type="password" id="password" value={user.password}/>
