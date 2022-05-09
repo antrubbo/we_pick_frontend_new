@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const API = process.env.REACT_APP_API_URL
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -15,17 +17,13 @@ const Signup = () => {
     }
 
     const onFormSubmit = (evt) => {
-        // async/await?
         evt.preventDefault()
-        fetch(`${API}/api/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(user)
-        })
-        .then(r => r.json())
+        axios.post(`${API}/api/users`, user)
         .then(user => console.log(user))
+        .then(response => {
+            alert("User successfully created!!")
+            navigate("/")
+        })
     }
 
     return(
