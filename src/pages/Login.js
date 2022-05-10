@@ -25,10 +25,13 @@ const Login = () => {
             email,
             password
         })
-        // .then(r => r.json())
         .then(loggedInUser => {
+            // fetch to authenticate route to authenticate loggedInUser.token
+            axios.post(`${API}/api/authenticate`, {
+                token: loggedInUser.data.token.split(" ")[1]
+            })
+            .then(res => console.log(res))
             // setCookie(incoming JWT token)
-            console.log(loggedInUser.data)
             setUser({username: "", email: "", password: ""})
         })
         .catch(error => {
