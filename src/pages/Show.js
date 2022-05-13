@@ -7,7 +7,6 @@ const API = process.env.REACT_APP_API_URL
 const Show = () => {
     const [ movie, setMovie ] = useState({})
     const [ show, setShow ] = useState(false)
-
     const params = useParams()
     const { id } = params
 
@@ -27,9 +26,10 @@ const Show = () => {
             <p>{overview}</p>
             <button onClick={() => setShow(true)}>View Trailer</button>
             <form>
-                <label htmlFor="selectList">Add to List</label>
+                <label htmlFor="selectList">Add to List</label>{" "}
                 <select name="" id="selectList">
-                    <option value="">My Movies</option>
+                    <option value="">--select--</option>
+                    <option value="My Movies">My Movies</option>
                 </select>
             </form>
         </div>
