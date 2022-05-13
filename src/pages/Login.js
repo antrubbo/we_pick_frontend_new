@@ -26,18 +26,19 @@ const Login = () => {
             password
         })
         .then(loggedInUser => {
+            // console.log(loggedInUser.data.token.split(" ")[1])
             // fetch to authenticate route to authenticate loggedInUser.token
-            axios.post(`${API}/api/authenticate`, {
-                token: loggedInUser.data.token.split(" ")[1]
-            })
-            .then(res => console.log(res))
+            // axios.post(`${API}/api/auth`, {
+            //     token: loggedInUser.data.token.split(" ")[1]
+            // })
+            // .then(res => console.log(res))
             // setCookie(incoming JWT token)
             setUser({username: "", email: "", password: ""})
         })
-        .catch(error => {
-            console.log(error.response.data.error)
-            setUser({username: "", email: "", password: ""})
-        })
+        // .catch(error => {
+        //     console.log(error.response.data.error)
+        //     setUser({username: "", email: "", password: ""})
+        // })
     }
 
     return(
