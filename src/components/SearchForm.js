@@ -1,9 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-const API = process.env.REACT_APP_API_URL
-
-const SearchForm = ({ setFoundMovies }) => {
+const SearchForm = () => {
     const navigate = useNavigate()
     const [searchTerms, setSearchTerms] = useState("")
 
@@ -13,18 +11,8 @@ const SearchForm = ({ setFoundMovies }) => {
 
     const handleSearch = (evt) => {
         evt.preventDefault()
-        fetch(`${API}/api/movies?title=${searchTerms}`)
-        .then(res => res.json())
-        .then(movies => {
-            if (movies.error){
-                console.log(movies.error)
-            } else {
-                setFoundMovies(movies)
-                setSearchTerms("")
-                navigate("/search-results")
-            }
-        })
-        .catch(err => console.log(err))
+        navigate(`/search-results?q=${searchTerms}`)
+        setSearchTerms("")
     }
 
     return(
