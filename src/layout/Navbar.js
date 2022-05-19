@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SearchForm from './SearchForm'
+import SearchForm from '../components/SearchForm'
 import '../stylesheets/navbar.css'
 
 const Navbar = () => {

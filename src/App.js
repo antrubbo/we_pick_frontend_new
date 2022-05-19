@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Navbar from './components/Navbar'
+import Navbar from './layout/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SearchResults from './pages/SearchResults';

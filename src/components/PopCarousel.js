@@ -9,22 +9,27 @@ function PopCarousel ({popMovies}) {
   }
 
   const mappedMovies = popMovies.map(m => {
-    return <Carousel.Item interval={4000} key={m.id} onClick={onImgClick}>
-            {/* <Carousel.Caption>
-              <h3>{m.title}</h3>
-            </Carousel.Caption> */}
+    return <Carousel.Item key={m.id} onClick={onImgClick}>
             <img
               id={m.id}
-              style={{ margin: "auto" }}
+              // style={{ margin: "auto" }}
               className="d-block"
               src={`https://themoviedb.org/t/p/w300_and_h450_bestv2${m.poster_path}`}
               alt={m.title}
             />
+            {/* <Carousel.Caption>
+              <h3>{m.title}</h3>
+            </Carousel.Caption> */}
           </Carousel.Item>
   })
 
   return (
-    <Carousel>
+    <Carousel 
+    interval={5000} 
+    slide={false} 
+    indicators={ false } 
+    controls={ false }
+    >
       {mappedMovies}
     </Carousel>
   )

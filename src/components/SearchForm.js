@@ -19,13 +19,18 @@ const SearchForm = () => {
         <div id="search-container">
             <form className="search-form" onSubmit={handleSearch}>
             <input
+                id="search-input"
                 type="text"
                 className="searchTerm"
                 placeholder="Search by title..."
                 value={searchTerms}
                 onChange={handleSearchInput}
-                /> 
-            <button type="submit">Search</button>
+            /> 
+            <button 
+            id="search-button"
+            type="submit"
+            >
+            Search</button>
             </form>
         </div>
     )
