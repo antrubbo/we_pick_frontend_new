@@ -22,10 +22,10 @@ const SearchForm = () => {
                 id="search-input"
                 type="text"
                 className="searchTerm"
-                placeholder="Search by title..."
+                placeholder=" Search by title..."
                 value={searchTerms}
                 onChange={handleSearchInput}
-            /> 
+            />&nbsp;&nbsp;
             <button 
             id="search-button"
             type="submit"
