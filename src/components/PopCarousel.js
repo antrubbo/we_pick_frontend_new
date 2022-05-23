@@ -1,14 +1,14 @@
 import Carousel from 'react-bootstrap/Carousel'
 import { useNavigate } from 'react-router-dom';
 
-function PopCarousel ({popMovies}) {
+function PopCarousel ({popularMovies}) {
   const navigate = useNavigate()
 
   function onImgClick(evt) {
     navigate(`/movies/${evt.target.id}`)
   }
 
-  const mappedMovies = popMovies.map(m => {
+  const mappedMovies = popularMovies?.map(m => {
     return <Carousel.Item key={m.id} onClick={onImgClick}>
             <img
               id={m.id}
